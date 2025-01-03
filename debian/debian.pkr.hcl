@@ -29,8 +29,12 @@ build {
           ssh_public_key         = chomp(file(var.ssh_public_key_file))
       })
     }
-    iso_url       = var.iso_url["debian11"]
-    iso_checksum  = var.iso_checksum["debian11"]
+    boot_iso {
+      # iso_url       = var.iso_url["debian11"]
+      # iso_checksum  = var.iso_checksum["debian11"]
+      iso_file = "${var.iso_storage_pool}:iso/${var.iso_image["debian11"]}"
+      unmount = var.unmount_iso
+    }
     template_name = "debian11"
     vm_id         = var.vm_id["debian11"]
   }
@@ -47,8 +51,12 @@ build {
           ssh_public_key         = chomp(file(var.ssh_public_key_file))
       })
     }
-    iso_url       = var.iso_url["debian12"]
-    iso_checksum  = var.iso_checksum["debian12"]
+    boot_iso {
+      # iso_url       = var.iso_url["debian12"]
+      # iso_checksum  = var.iso_checksum["debian12"]
+      iso_file = "${var.iso_storage_pool}:iso/${var.iso_image["debian12"]}"
+      unmount = var.unmount_iso
+    }
     template_name = "debian12"
     vm_id         = var.vm_id["debian12"]
   }

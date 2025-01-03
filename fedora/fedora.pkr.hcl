@@ -41,8 +41,12 @@ build {
         ssh_public_key = chomp(file(var.ssh_public_key_file))
       })
     }
-    iso_url       = var.iso_url["fedora40"]
-    iso_checksum  = var.iso_checksum["fedora40"]
+    boot_iso {
+      iso_file = "${var.iso_storage_pool}:iso/${var.iso_image["fedora40"]}"
+      unmount = var.unmount_iso
+    }
+    # iso_url       = var.iso_url["fedora40"]
+    # iso_checksum  = var.iso_checksum["fedora40"]
     template_name = "fedora40"
     vm_id         = var.vm_id["fedora40"]
   }
@@ -57,8 +61,12 @@ build {
         ssh_public_key = chomp(file(var.ssh_public_key_file))
       })
     }
-    iso_url       = var.iso_url["fedora41"]
-    iso_checksum  = var.iso_checksum["fedora41"]
+    boot_iso {
+      iso_file = "${var.iso_storage_pool}:iso/${var.iso_image["fedora41"]}"
+      unmount = var.unmount_iso
+    }
+    # iso_url       = var.iso_url["fedora41"]
+    # iso_checksum  = var.iso_checksum["fedora41"]
     template_name = "fedora41"
     vm_id         = var.vm_id["fedora41"]
   }

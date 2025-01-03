@@ -33,10 +33,38 @@ build {
         ssh_public_key   = chomp(file(var.ssh_public_key_file))
       })
     }
-    iso_url       = var.iso_url["centos9"]
-    iso_checksum  = var.iso_checksum["centos9"]
+    boot_iso {
+      # iso_url       = var.iso_url["centos9"]
+      # iso_checksum  = var.iso_checksum["centos9"]
+      iso_file = "${var.iso_storage_pool}:iso/${var.iso_image["centos9"]}"
+      unmount = var.unmount_iso
+    }
     template_name = "centos9"
     vm_id         = var.vm_id["centos9"]
+  }
+
+  source "proxmox-iso.image" {
+    name         = "centos10"
+    boot_command = var.boot_cmd_centos
+    boot_wait    = var.boot_wait
+    http_content = { "/anaconda-ks.cfg" = templatefile("configs/anaconda-ks.cfg",
+      {
+        centos_url       = var.centos_install_url["centos10"],
+        mirror_baseos    = var.centos_mirror_baseos["centos10"],
+        mirror_appstream = var.centos_mirror_appstream["centos10"],
+        mirror_extras    = var.centos_mirror_extras["centos10"],
+        var              = var,
+        ssh_public_key   = chomp(file(var.ssh_public_key_file))
+      })
+    }
+    boot_iso {
+      # iso_url       = var.iso_url["centos10"]
+      # iso_checksum  = var.iso_checksum["centos10"]
+      iso_file = "${var.iso_storage_pool}:iso/${var.iso_image["centos10"]}"
+      unmount = var.unmount_iso
+    }
+    template_name = "centos10"
+    vm_id         = var.vm_id["centos10"]
   }
 
   provisioner "shell" {

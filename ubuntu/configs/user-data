@@ -13,6 +13,8 @@ autoinstall:
   ssh:
     install-server: true
     allow-pw: false
+    ssh_import_id:
+      - gh:aanorbel
     authorized-keys:
       - ${ssh_public_key}
   timezone: UTC

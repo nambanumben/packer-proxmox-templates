@@ -11,8 +11,12 @@ build {
           ssh_public_key = chomp(file(var.ssh_public_key_file))
       })
     }
-    iso_url       = var.iso_url["ubuntu20"]
-    iso_checksum  = var.iso_checksum["ubuntu20"]
+
+    boot_iso {
+      iso_file = "${var.iso_storage_pool}:iso/${var.iso_image["ubuntu20"]}"
+      unmount = var.unmount_iso
+    }
+
     template_name = "ubuntu20"
     vm_id         = var.vm_id["ubuntu20"]
   }
@@ -29,8 +33,12 @@ build {
           ssh_public_key = chomp(file(var.ssh_public_key_file))
       })
     }
-    iso_url       = var.iso_url["ubuntu22"]
-    iso_checksum  = var.iso_checksum["ubuntu22"]
+
+    boot_iso {
+      iso_file = "${var.iso_storage_pool}:iso/${var.iso_image["ubuntu22"]}"
+      unmount = var.unmount_iso
+    }
+
     template_name = "ubuntu22"
     vm_id         = var.vm_id["ubuntu22"]
   }
@@ -47,8 +55,12 @@ build {
           ssh_public_key = chomp(file(var.ssh_public_key_file))
       })
     }
-    iso_url       = var.iso_url["ubuntu24"]
-    iso_checksum  = var.iso_checksum["ubuntu24"]
+
+    boot_iso {
+      iso_file = "${var.iso_storage_pool}:iso/${var.iso_image["ubuntu24"]}"
+      unmount = var.unmount_iso
+    }
+
     template_name = "ubuntu24"
     vm_id         = var.vm_id["ubuntu24"]
   }

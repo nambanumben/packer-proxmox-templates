@@ -23,9 +23,9 @@ source "proxmox-iso" "image" {
   ssh_clear_authorized_keys = var.ssh_clear_authorized_keys
 
   // ISO
-  iso_download_pve     = var.iso_download_pve
-  iso_storage_pool     = var.iso_storage_pool
-  unmount_iso          = var.unmount_iso
+  # iso_download_pve     = var.iso_download_pve
+  # iso_storage_pool     = var.iso_storage_pool
+  # unmount_iso          = var.unmount_iso
   os                   = var.os
   template_description = "Packer generated template image on ${timestamp()}"
 
@@ -60,8 +60,5 @@ source "proxmox-iso" "image" {
   // Network
   network_adapters {
     bridge   = var.net_bridge
-    model    = var.net_model
-    vlan_tag = var.net_vlan_tag
-    firewall = var.net_firewall
   }
 }

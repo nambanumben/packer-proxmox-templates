@@ -32,6 +32,7 @@ variable "centos_install_url" {
   default = {
     "centos8" = ""
     "centos9" = ""
+    "centos10" = ""
   }
 }
 
@@ -41,6 +42,7 @@ variable "centos_mirror_appstream" {
   default = {
     "centos8" = ""
     "centos9" = ""
+    "centos10" = ""
   }
 }
 
@@ -50,6 +52,7 @@ variable "centos_mirror_baseos" {
   default = {
     "centos8" = ""
     "centos9" = ""
+    "centos10" = ""
   }
 }
 
@@ -59,6 +62,26 @@ variable "centos_mirror_extras" {
   default = {
     "centos8" = ""
     "centos9" = ""
+    "centos10" = ""
+  }
+}
+
+variable "iso_image" {
+  type = map(string)
+  default = {
+    "centos8"  = ""
+    "centos9"  = "CentOS-Stream-9-latest-x86_64-boot.iso"
+    "centos10"  = "CentOS-Stream-10-latest-x86_64-dvd1.iso"
+    "debian10" = "debian-10.13.0-amd64-netinst.iso"
+    "debian11" = "debian-11.11.0-amd64-netinst.iso"
+    "debian12" = "debian-12.8.0-amd64-netinst.iso"
+    "fedora38" = "Fedora-Server-netinst-x86_64-38-1.6.iso"
+    "fedora39" = "Fedora-Server-netinst-x86_64-39-1.5.iso"
+    "fedora40" = "Fedora-Server-netinst-x86_64-40-1.14.iso"
+    "fedora41" = "Fedora-Server-netinst-x86_64-41-1.4.iso"
+    "ubuntu20" = "ubuntu-20.04.6-live-server-amd64.iso"
+    "ubuntu22" = "ubuntu-22.04.5-live-server-amd64.iso"
+    "ubuntu24" = "ubuntu-24.04.1-live-server-amd64.iso"
   }
 }
 
@@ -113,24 +136,25 @@ variable "vm_id" {
   type = map(number)
   default = {
     "centos8"  = 0
-    "centos9"  = 0
+    "centos9"  = 9019
+    "centos10"  = 9010
     "debian10" = 0
-    "debian11" = 0
-    "debian12" = 0
+    "debian11" = 9011
+    "debian12" = 9012
     "fedora38" = 0
     "fedora39" = 0
-    "fedora40" = 0
-    "fedora41" = 0
-    "ubuntu20" = 0
-    "ubuntu22" = 0
-    "ubuntu24" = 0
+    "fedora40" = 9040
+    "fedora41" = 9041
+    "ubuntu20" = 9020
+    "ubuntu22" = 9022
+    "ubuntu24" = 9024
   }
 }
 
 // Boot Commands //
 variable "boot_wait" {
   type    = string
-  default = "5s"
+  default = "10s"
 }
 
 variable "boot_cmd_centos" {

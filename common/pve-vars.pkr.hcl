@@ -14,7 +14,7 @@ variable "ssh_password" {
 
 variable "ssh_timeout" {
   type    = string
-  default = "20m"
+  default = "90m"
 }
 
 variable "ssh_keypair_name" {
